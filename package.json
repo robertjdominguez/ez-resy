@@ -1,0 +1,19 @@
+{
+  "name": "resy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./env_manager.sh && node --env-file=.env index.js",
+    "start:today": "node --env-file=.env index.js"
+  },
+  "keywords": [],
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.5.1",
+    "form-data": "^4.0.0"
+  }
+}
