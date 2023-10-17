@@ -6,6 +6,8 @@ This script allows you to make a reservation at a restaurant on Resy. It's ideal
 manually as well. Imagine picking your day and ideal time, and then letting the script do the rest. It's that easy. No
 more wait-lists, no more checking the app every 5 minutes. Just set it and forget it.
 
+https://github.com/robertjdominguez/ez-resy/assets/24390149/68a8b7be-0ac8-454a-94b3-d84a6f1c3bd2
+
 ## Motivation
 
 One day, [Highlands Bar & Grill](https://highlandsbarandgrill.com/) will reopen. And when it does, I want to be there. I
