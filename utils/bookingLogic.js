@@ -60,7 +60,7 @@ async function makeBooking(book_token) {
     const response = await axios.post(config.url, formData, {
       headers: {
         ...config.headers,
-        ...formData.getHeaders(), // Set the appropriate headers for form data
+        ...formData.getHeaders(),
       },
     });
     return response.data;

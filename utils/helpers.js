@@ -1,3 +1,5 @@
+import jwt from 'jsonwebtoken';
+
 function convertTimeToTwelveHourFormat(time) {
   const timeString = time.split(' ')[1];
   const [hour, minutes] = timeString.split(':');
@@ -30,6 +32,35 @@ function isTimeBetween(startTime, endTime, dateString) {
   return targetMinutes >= startMinutes && targetMinutes <= endMinutes;
 }
 
-function checkForExistingBooking() {}
+async function checkTokenExpiration(token) {
+  if (!token) {
+    console.error('JWT token not found in the AUTH_TOKEN environment variable');
+    process.exit(1);
+  }
 
-export { convertTimeToTwelveHourFormat, convertDateToLongFormat, isTimeBetween };
+  try {
+    const decoded = jwt.decode(token);
+
+    if (decoded) {
+      const currentTimestamp = Math.floor(Date.now() / 1000);
+      const timeUntilExpiration = decoded.exp - currentTimestamp;
+      const expirationDate = new Date(decoded.exp * 1000);
+
+      if (timeUntilExpiration <= 0) {
+        console.log('JWT has already expired');
+        return false;
+      } else {
+        console.log(`JWT will expire on ${expirationDate}`);
+        return true;
+      }
+    } else {
+      console.error('JWT decoding failed');
+      return false;
+    }
+  } catch (error) {
+    console.error('JWT decoding failed:', error);
+    return false;
+  }
+}
+
+export { convertTimeToTwelveHourFormat, convertDateToLongFormat, isTimeBetween, checkTokenExpiration };
